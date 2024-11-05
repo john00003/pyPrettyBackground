@@ -31,3 +31,17 @@ learning technique used to evaluate the closeness between two images using their
 
 To interact with the CNN I created a basic **CLI**, allowing users to specify which image they'd like to find a similar 
 image to without having to modify any code.
+
+## How to Use
+You'll need to start by downloading the LHQ dataset from https://github.com/universome/alis/blob/master/lhq.md.
+
+After the dataset is downloaded, modify the dataset_path to the LHQ dataset folder in *init_dataset_feature_vectors.py*, 
+along with the *feature_vectors_path* to match where the repo is located (I have already produced the feature vector .csv).
+
+I extracted the features of each of the 90000 images using the 256 x 256 lhq dataset, however the program is organized
+in a way that if you'd like to have the images in higher quality (for example, 1024x1024, also available from the LHQ dataset),
+the image recommendation system will recommend you the corresponding image in whatever quality is available specified
+by the path to the LHQ dataset described above.
+
+I am curious as to how the produced feature vectors might have changed if I were to have extracted them from the version
+of the dataset with higher resolution.
