@@ -33,10 +33,15 @@ To interact with the CNN I created a basic **CLI**, allowing users to specify wh
 image to without having to modify any code.
 
 ## How to Use
-You'll need to start by downloading the LHQ dataset from https://github.com/universome/alis/blob/master/lhq.md.
+First you will have to extract the features of the dataset images:
+
+Start by downloading the LHQ dataset from https://github.com/universome/alis/blob/master/lhq.md.
 
 After the dataset is downloaded, modify the dataset_path to the LHQ dataset folder in *init_dataset_feature_vectors.py*, 
-along with the *feature_vectors_path* to match where the repo is located (I have already produced the feature vector .csv).
+along with the *feature_vectors_path* to match where the repo is located.
+
+Then, by issuing the first command you can initialize the .csv file containing the feature vectors of the 90000 dataset
+images. This will take some time.
 
 I extracted the features of each of the 90000 images using the 256 x 256 lhq dataset, however the program is organized
 in a way that if you'd like to have the images in higher quality (for example, 1024x1024, also available from the LHQ dataset),

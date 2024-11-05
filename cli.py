@@ -1,3 +1,5 @@
+import numpy as np
+
 from process_image import load_image
 from cnn import resNet50Model
 from similarity import find_most_similar
@@ -25,6 +27,7 @@ def prompt():
         #     print("Error: Could not load image")
 
         feature_vector = resNet50Model().extract_features(image)
+        feature_vector = np.squeeze(feature_vector)
         most_similar = find_most_similar(feature_vector)
         print(most_similar['file_name'])
         return True

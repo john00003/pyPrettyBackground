@@ -3,9 +3,10 @@ from os import listdir
 from os.path import join
 from cnn import resNet50Model
 from process_image import load_image
+import numpy as np
 
 class DatasetFeatureVectorManager:
-    def __init__(self, dataset_path="C:\github repos\pyPrettyBackground\dataset", feature_vectors_path="C:\github repos\pyPrettyBackground"):
+    def __init__(self, dataset_path="C:\\Users\\doggo\\Pictures\\lhq_dataset", feature_vectors_path="C:\\github repos\\pyPrettyBackground"):
         self.dataset_path = dataset_path
         self.feature_vectors_path = feature_vectors_path
         self.feature_vectors_df = None
@@ -19,6 +20,7 @@ class DatasetFeatureVectorManager:
     def init_dataset_feature_vectors(self):
         # check if we have already initialized the .csv file
         if ('dataset_feature_vectors.csv' in listdir(self.feature_vectors_path)):
+            print("Reading CSV file...")
             df = pd.read_csv('dataset_feature_vectors.csv')
             return df
         else:
@@ -40,10 +42,20 @@ class DatasetFeatureVectorManager:
                     print("{0}%".format(percent_complete*100))
                     previous_percent_complete = percent_complete
 
-            all_feature_vectors = [self.get_image_feature_vector(image) for image in file_names]
 
-            df = pd.DataFrame(all_feature_vectors, columns="feature_vectors")
+            #all_feature_vectors = [self.get_image_feature_vector(image) for image in file_names]
+            print("Squeezing feature vector array")
+            all_feature_vectors = np.squeeze(np.array(all_feature_vectors))
+
+            print("Creating the pandas dataframe.")
+            print("Converting NumPy array to a list.")
+            print(np.shape(all_feature_vectors))
+            d = {"feature_vectors": all_feature_vectors.tolist()}
+            print("Inserting feature vectors.")
+            df = pd.DataFrame(d)
+            print("Inserting file names.")
             df.insert(0, 'file_name', file_names)
+            print("Saving the dataframe as csv.")
             df.to_csv('dataset_feature_vectors.csv', index=False)
 
         return df
