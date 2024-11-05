@@ -43,6 +43,8 @@ along with the *feature_vectors_path* to match where the repo is located.
 Then, by issuing the first command you can initialize the .csv file containing the feature vectors of the 90000 dataset
 images. This will take some time.
 
+The output of command to find a similar image is the path to the file from the dataset containing the similar image.
+
 I extracted the features of each of the 90000 images using the 256 x 256 lhq dataset, however the program is organized
 in a way that if you'd like to have the images in higher quality (for example, 1024x1024, also available from the LHQ dataset),
 the image recommendation system will recommend you the corresponding image in whatever quality is available specified
@@ -50,3 +52,14 @@ by the path to the LHQ dataset described above.
 
 I am curious as to how the produced feature vectors might have changed if I were to have extracted them from the version
 of the dataset with higher resolution.
+
+## Example
+**Input:**
+
+
+![image](moss.jpg)
+
+**Output:**
+
+
+![image](0048301.png)
